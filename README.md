@@ -1,5 +1,3 @@
-# udacity_project4
-
 # Udacity Project 4: Become a Frontend developer
 Feed reader testing with Jasmine.  
 
