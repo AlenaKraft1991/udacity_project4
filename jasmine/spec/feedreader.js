@@ -78,10 +78,11 @@ $(function () {
      * hiding/showing of the menu element.
      */
     describe('the menu', function () {
-        let body = document.getElementsByTagName('body'[0]);
-        it('hidden by default', function () {
-            //classList returns the class name(s) of an element: useful to add, remove and toggle CSS classes like "menu-hidden"
-            expect(body.classList.contains('menu-hidden')).toBe(true); 
+        
+        it('is hidden by default', function () {
+            // Check if the class menu-hidden is part of the body 
+            // Check if the class name is exactly "menu-hidden" 
+            expect($('body').hasClass('menu-hidden')).toBe(true); 
         }); 
 
         /* TODO: Write a test that ensures the menu changes
@@ -89,13 +90,15 @@ $(function () {
          * should have two expectations: does the menu display when
          * clicked and does it hide when clicked again.
          */
-        it('toggle on', function () {
-            let icon = document.getElementsByClassName('menu-icon-link'[0]);
-
+        it('changes visibility when clicked', function () {
+            const menuIcon = document.querySelector(".menu-icon-link");
+        
+			// When the menu icon is clicked, the menu is shown, not hidden --> false. 
             menuIcon.click();
-            expect(body.classList.contains('menu-hidenn')).toBe(true); 
+            expect($('body').hasClass('menu-hidden')).toBe(false);
+            // When the menu icon is clicked again, it disappears --> menu-hidden needs to be true. 
             menuIcon.click();
-            expect(body.classList.contains('menu-hidenn')).toBe(false); 
+            expect($('body').hasClass('menu-hidden')).toBe(true);
              });
          });
     /* TODO: Write a new test suite named "Initial Entries" */
@@ -113,11 +116,10 @@ $(function () {
         });
 
         it('load feed function is called', function () {
-            let feed = document.querySelector('.feed'); // querySelector: returns the first element that is a descendant of the element
-            let entry = document.querySelector('.entry'); // querySelector: returns the first element that is a descendant of the element
-            expect(feed.entry).toBeGreaterThan(0); 
-            expect(feed.length).toBeGreaterThan(0); 
-            // expect($('.feed .entry').length).toBeGreaterThan(0);
+            // querySelector: The document method querySelector() returns the first Element within the document that matches the specified selector
+            // querySelectorAll:If you need a list of all elements matching the specified selectors, you should use querySelectorAll() instead. 
+            let feedandentry = document.querySelector('.feed').querySelectorAll('.entry');
+            expect(feedandentry.length).toBeGreaterThan(0); 
         });
     });
 
